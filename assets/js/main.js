@@ -26,15 +26,29 @@ $(document).ready(function() {
         }
     });
 
-
 	$(".move").on("click", function(e){
 		var curPlayer = $(e.target.offsetParent).attr('id');
         players[curPlayer].move = $(e.target).attr("data-move")
 		console.log(curPlayer+":"+players[curPlayer].move);
+        if (players['player1'].move != null && players['player1'].move != null ) {
+            result = getResult();
+        }
 	});
 
 });//document.ready
 
+function getResult() {
+    if(players['player1'].move === 'player2'].move)
+    switch(players['player1'].move){
+        case 'rock':
+            if(players['player1'].move === )
+            break;
+        case 'paper':
+            break;
+        case 'scissors'
+            break;
+    }
+}
 
 function checkPlayers() {
     for (key in players) {
