@@ -22,18 +22,9 @@ $(document).ready(function(){
 		}
 	});
 
-	$(".ready").on("click", function(e){
-		var curPlayer = $(e.target).attr("data-player");
-		enteredText = $('#'+curPlayer+' .name').val().trim();
-		if(enteredText==""){
-			alert("Please enter a valid name")
-		}else{
-				numPlayers++;
-				players[curPlayer] = new Player(enteredText);
-				$('#'+curPlayer+' .form-group').slideUp();
-				$('#'+curPlayer+' .move-text').html("Waiting for 2nd player");
-				checkPlayers();
-		}
+	$(".move").on("click", function(e){
+		var curPlayer = $(e.target.offsetParent).attr('id');
+		console.log(curPlayer);
 	});
 
 });//document.ready
