@@ -5,8 +5,8 @@ function Player(name) {
 	this.losses = 0;
 	this.ties = 0;
 	this.lastMove = "";
-
 }
+
 var enteredText = "",
     players = { player1: null, player2: null },
     numPlayers = 0;
@@ -27,14 +27,13 @@ $(document).ready(function() {
     });
 
 
-}); //document.ready
-
 	$(".move").on("click", function(e){
 		var curPlayer = $(e.target.offsetParent).attr('id');
-		console.log(curPlayer);
+        players[curPlayer].move = $(e.target).attr("data-move")
+		console.log(curPlayer+":"+players[curPlayer].move);
 	});
 
-};//document.ready
+});//document.ready
 
 
 function checkPlayers() {
