@@ -1,8 +1,11 @@
 function Player(name) {
-    this.name = name;
-    this.wins = 0;
-    this.losses = 0;
-    this.ties = 0;
+
+	this.name = name;
+	this.wins = 0;
+	this.losses = 0;
+	this.ties = 0;
+	this.lastMove = "";
+
 }
 var enteredText = "",
     players = { player1: null, player2: null },
@@ -23,7 +26,25 @@ $(document).ready(function() {
         }
     });
 
+
 }); //document.ready
+
+	$(".ready").on("click", function(e){
+		var curPlayer = $(e.target).attr("data-player");
+		enteredText = $('#'+curPlayer+' .name').val().trim();
+		if(enteredText==""){
+			alert("Please enter a valid name")
+		}else{
+				numPlayers++;
+				players[curPlayer] = new Player(enteredText);
+				$('#'+curPlayer+' .form-group').slideUp();
+				$('#'+curPlayer+' .move-text').html("Waiting for 2nd player");
+				checkPlayers();
+		}
+	});
+
+};//document.ready
+
 
 function checkPlayers() {
     for (key in players) {
@@ -36,15 +57,3 @@ function checkPlayers() {
         }
     }
 } //checkPlayers function
-
-var config = {
-    apiKey: "AIzaSyAuzpYPGSxKqUW8sufar0mtUoaukpsgiAE",
-    authDomain: "rockpaperscissors-4a4dd.firebaseapp.com",
-    databaseURL: "https://rockpaperscissors-4a4dd.firebaseio.com",
-    projectId: "rockpaperscissors-4a4dd",
-    storageBucket: "",
-    messagingSenderId: "203549650258"
-};
-
-firebase.initializeApp(config);
-var database = firebase.database();
